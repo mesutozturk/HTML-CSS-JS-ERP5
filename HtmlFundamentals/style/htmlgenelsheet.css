@@ -5,6 +5,10 @@ font-family: 'Catamaran', sans-serif;
 */
 body {
     font-family: 'Catamaran', sans-serif;
+    background: url("/img/kagit.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 th {
@@ -12,13 +16,17 @@ th {
 }
 
 table {
-    background-color: burlywood;
+    background: url("/img/altigen.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
     border: 2px solid tomato;
 }
 
 td, th {
     border: 1px solid rgba(120,60,44,0.4);
     padding: 5px;
+    transition: all .4s ease-in;
 }
 
 h2 {
@@ -29,6 +37,20 @@ h2 {
 
 div h2 {
     color: darkslateblue;
+}
+@keyframes meksika {
+    0% {
+        transform: scale(1.1) rotate(90deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    50% {
+        transform: translate(50px) rotate(270deg);
+    }
+    100% {
+        transform: scale(0.7) translate(-50px) rotate(360deg);
+    }
 }
 
 .kart {
@@ -41,6 +63,9 @@ div h2 {
     width: 200px;
     height: 150px;
     float: left;
+    animation-name: meksika;
+    animation-duration: 4s;
+    animation-delay: 2s;
 }
 
     .kart:hover {
@@ -61,3 +86,16 @@ div h2 {
     #tanitimdiv:hover {
         background-color: lightsalmon;
     }
+
+td:hover {
+    background-color: deepskyblue;
+    color: beige;
+}
+
+.metin {
+    border: 2px solid #000;
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    min-height: 200px;
+}
