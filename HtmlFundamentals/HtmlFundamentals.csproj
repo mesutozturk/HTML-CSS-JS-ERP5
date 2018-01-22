@@ -76,9 +76,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="01HtmlGenel.html" />
+    <Content Include="02CssMenuOlusturma.html" />
     <Content Include="img\altigen.jpg" />
     <Content Include="img\kagit.png" />
     <Content Include="style\htmlgenelsheet.css" />
+    <Content Include="style\menu.css" />
     <Content Include="test\test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
