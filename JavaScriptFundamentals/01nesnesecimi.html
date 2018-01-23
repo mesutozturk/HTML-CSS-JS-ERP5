@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // javascript - java
+        // car           - carpet
+        function tikla(a, b, c) {
+            if (a == 0) {
+                console.log("Sıfır girdin olmaz!");
+                return;
+            }
+            console.log(kareAl(a) + b + c);
+            return "hahaha";
+        }
+        function kareAl(k) {
+            return k * k;
+        }
+        function gonder(sender) {
+            var mesaj = document.getElementById("txtmesaj");
+            console.log("Merhaba " + mesaj.value);
+            document.getElementById("lblmesaj").innerText = "<b>Merhaba " + mesaj.value+"</b>";
+            console.log(sender); // this = sender 
+        }
+        function yazdir(txt) {
+            document.getElementById("lblmesaj").innerText = txt.value;
+        }
+    </script>
+</head>
+<body>
+    DOM Document Object Model
+    <input type="button" value="Tıkla" onclick='tikla(3,5,"kamil")' /><br />
+    <input type="text" placeholder="Mesajınızı girin" id="txtmesaj" />
+    <input type="button" value="Gönder" onclick="gonder(this)" /><br /><br />
+    <input type="text" onkeyup="yazdir(this)"/><br />
+    <label id="lblmesaj"></label>
+</body>
+</html>

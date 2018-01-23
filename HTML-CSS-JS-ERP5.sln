@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlFundamentals", "HtmlFundamentals\HtmlFundamentals.csproj", "{2B59AE3D-7358-4F0E-8A46-7308A55F84F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptFundamentals", "JavaScriptFundamentals\JavaScriptFundamentals.csproj", "{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2B59AE3D-7358-4F0E-8A46-7308A55F84F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B59AE3D-7358-4F0E-8A46-7308A55F84F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B59AE3D-7358-4F0E-8A46-7308A55F84F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
