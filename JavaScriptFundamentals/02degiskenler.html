@@ -37,6 +37,32 @@
         a = function (a) {
             return a - a * a;
         }
+        var car = {
+            name: "bmw",
+            model: "320d",
+            color: "lava red",
+            start: function () {
+                return this.name + " çalıştı";
+            },
+            stop: function () {
+                return this.name + " durdu"
+            }
+        }
+        console.log(car);
+        a = function (x, y) {
+            if (x === y)
+                return "eşit";
+            else
+                return "eşit değil";
+        }
+        a = Math.sin(Math.PI/2);
+        a = Math.random();
+        a = Math.floor(Math.random() * 10) + 1;
+        a = parseInt(3.91);
+        a = parseFloat(9);
+        for (var i = 0; i < 10; i++) {
+            console.log(Math.floor(Math.random() * 10) + 1);
+        }
     </script>
 </head>
 <body>
