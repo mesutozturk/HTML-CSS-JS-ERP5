@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Fonksiyonlar</title>
+</head>
+<body>
+    <input type="text" placeholder="Meyve Gir" id="txtMeyve" />
+    <input type="button" value="Ekle" onclick="meyveekle()" />
+    <input type="button" value="Temizle" onclick="temizle()" />
+    <br />
+    <div id="divmesaj">
+        <ol>
+            <li>elma <b>1</b><input type="button" value="+" id="1" onclick="arttir(this)" /></li>
+            <li>armut <b>5</b><input type="button" value="+" id="2" onclick="arttir(this)" /></li>
+            <li>erik <b>59</b><input type="button" value="+" id="3" onclick="arttir(this)" /></li>
+        </ol>
+    </div>
+
+    <script>
+        var meyvesepeti = [];
+        function temizle() {
+            if (meyvesepeti.length == 0) {
+                alert("zaten boş");
+                return;
+            }
+            meyvesepeti = [];
+            meyvedoldur();
+        }
+        function meyveekle() {
+            var meyveadi = document.getElementById("txtMeyve").value.trim();
+            if (meyveadi == null || meyveadi.length == 0) {
+                alert("Boş geçmeyelim");
+                return;
+            }
+            var yeniMeyve = {
+                isim: meyveadi
+            };
+            if (meyvesepeti.length === 0) {
+                yeniMeyve.id = 1;
+                yeniMeyve.adet = 1;
+                meyvesepeti.push(yeniMeyve);
+            } else {
+                var varmi = false;
+                for (var i = 0; i < meyvesepeti.length; i++) {
+                    if (meyvesepeti[i].isim.toLowerCase() === meyveadi.toLowerCase()) {
+                        varmi = true;
+                        meyvesepeti[i].adet++;
+                        break;
+                    }
+                }
+                if (!varmi) {
+                    yeniMeyve.id = meyvesepeti.length + 1;
+                    yeniMeyve.adet = 1;
+                    meyvesepeti.push(yeniMeyve);
+                }
+            }
+            meyvedoldur();
+            document.getElementById("txtMeyve").value = "";
+            document.getElementById("txtMeyve").focus();
+        }
+        function meyvedoldur() {
+            var div = document.getElementById("divmesaj");
+            div.innerHTML = "";
+            var total = 0;
+            var ol = document.createElement("ol");
+            var span = document.createElement("span");
+            for (var i = 0; i < meyvesepeti.length; i++) {
+                if (meyvesepeti[i].adet <= 0) {
+                    continue;
+                }
+                total += meyvesepeti[i].adet;
+                var li = document.createElement("li");
+                li.innerHTML = meyvesepeti[i].isim + " <b>" + meyvesepeti[i].adet + "</b>";
+                var artibutton = document.createElement("input");
+                artibutton.setAttribute("value", "+");
+                artibutton.setAttribute("type", "button");
+                artibutton.setAttribute("id", meyvesepeti[i].id);
+                artibutton.addEventListener("click", urunarttir);
+                var eksibuton = document.createElement("input");
+                eksibuton.setAttribute("value", "-");
+                eksibuton.setAttribute("type", "button");
+                eksibuton.setAttribute("id", meyvesepeti[i].id);
+                eksibuton.addEventListener("click", uruneksilt);
+                var cikartbuton = document.createElement("input");
+                cikartbuton.setAttribute("value", "Çıkart");
+                cikartbuton.setAttribute("type", "button");
+                cikartbuton.setAttribute("id", meyvesepeti[i].id);
+                cikartbuton.addEventListener("click", uruncikart);
+                li.appendChild(artibutton);
+                li.appendChild(eksibuton);
+                li.appendChild(cikartbuton);
+                ol.appendChild(li);
+            }
+            div.appendChild(ol);
+            span.innerHTML = "Toplam: " + total;
+            div.appendChild(span);
+        }
+        function uruncikart(sender) {
+            for (var i = 0; i < meyvesepeti.length; i++) {
+                if (meyvesepeti[i].id == sender.target.id) {
+                    meyvesepeti[i].adet = 0;
+                    break;
+                }
+            }
+            meyvedoldur();
+        }
+        function uruneksilt(sender) {
+            //console.log(sender.target.id);
+            for (var i = 0; i < meyvesepeti.length; i++) {
+                if (meyvesepeti[i].id == sender.target.id) {
+                    meyvesepeti[i].adet--;
+                    break;
+                }
+            }
+            meyvedoldur();
+        }
+        function urunarttir(sender) {
+            //console.log(sender.target.id);
+            for (var i = 0; i < meyvesepeti.length; i++) {
+                if (meyvesepeti[i].id == sender.target.id) {
+                    meyvesepeti[i].adet++;
+                    break;
+                }
+            }
+            meyvedoldur();
+        }
+    </script>
+</body>
+</html>
