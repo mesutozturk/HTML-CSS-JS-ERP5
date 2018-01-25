@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #palet {
+            height: 100px;
+            background-color: royalblue;
+            padding-top: 90px;
+            text-align: center;
+            border-radius: 20px;
+            border: 2px solid tomato;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    R <input type="range" id="rngred" min="0" max="255" value="0" onchange="degistir()" />
+    <label id="lblred">0</label> <br />
+    G <input type="range" id="rnggreen" min="0" max="255" value="66" onchange="degistir()" />
+    <label id="lblgreen">0</label> <br />
+    B <input type="range" id="rngblue" min="0" max="255" value="0" onchange="degistir()" />
+    <label id="lblblue">0</label> <br />
+    <div id="palet">rgb(100,50,20)</div>
+    <script>
+        a = 255;
+        function degistir() {
+            var r = 0, g = 0, b = 0;
+            r = document.getElementById("rngred").value;
+            g = document.getElementById("rnggreen").value;
+            b = document.getElementById("rngblue").value;
+            document.getElementById("lblred").innerText = r;
+            document.getElementById("lblgreen").innerText = g;
+            document.getElementById("lblblue").innerText = b;
+            var renkkod = "rgb(" + r + "," + g + "," + b + ")";
+            var hex = "#" +tohex(r) + "" + tohex(g) + "" + tohex(b);
+            var zit = "rgb(" + (255 - r) + "," + (255 - g) + "," + (255 - b) + ")";
+            document.getElementById("palet").style.backgroundColor = renkkod;
+            document.getElementById("palet").innerText = renkkod;
+            document.getElementById("palet").style.color = zit;
+            document.getElementById("palet").innerText +=" - "+ hex;
+        }
+        degistir();
+        function tohex(number) {
+            var hex = parseInt(number).toString(16);
+            if (hex.length < 2)
+                hex = "0" + hex;
+            return hex;
+        }
+    </script>
+</body>
+</html>

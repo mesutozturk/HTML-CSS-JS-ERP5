@@ -78,6 +78,8 @@
     <Content Include="01nesnesecimi.html" />
     <Content Include="02degiskenler.html" />
     <Content Include="03fonksiyonlar.html" />
+    <Content Include="04colorpicker.html" />
+    <Content Include="05buttonception.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
