@@ -9,11 +9,11 @@
             float: left;
             height: 200px;
             width: 200px;
-            transition: all .4s ease;
+            transition: all 1.4s ease;
+            border-radius:100px;
         }
-
             .kare:hover {
-                transform: scale(1.04);
+                transform: scale(1.04) rotate(1800deg) translate(10px);
             }
     </style>
 </head>
@@ -34,10 +34,11 @@
             var width = item.offsetWidth;
             var height = item.offsetHeight;
             var yenidiv = document.createElement("div");
-            yenidiv.setAttribute("style", "margin:5px; float:left; height:" + (Number(height) - 10) + "px; width:" + (Number(width) - 10) + "px; background-color:" + getRandomColor() + ";");
+            yenidiv.setAttribute("style", "margin:5px; float:left; height:" + (Number(height) - 10) + "px; width:" + (Number(width) - 10) + "px; background-color:" + getRandomColor() + ";border-radius:" + (Number(height)/2)+"px");
             yenidiv.setAttribute("onclick", "icineekle(this)");
             yenidiv.style.backgroundColor = getRandomColor();
             item.setAttribute("onclick", null);
+            //item.onclick = null;
             item.appendChild(yenidiv);
         }
         function getRandomColor() {
