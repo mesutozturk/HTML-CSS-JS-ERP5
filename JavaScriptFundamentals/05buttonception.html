@@ -3,9 +3,51 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .kare {
+            margin: 5px;
+            float: left;
+            height: 200px;
+            width: 200px;
+            transition: all .4s ease;
+        }
+
+            .kare:hover {
+                transform: scale(1.04);
+            }
+    </style>
 </head>
 <body>
     <input type="button" id="btnEkle" value="Ekle" onclick="divekle()" />
     <div id="divPanel"></div>
+
+    <script>
+        var divpanel = document.getElementById("divPanel");
+        function divekle() {
+            var yenidiv = document.createElement("div");
+            yenidiv.setAttribute("class", "kare");
+            yenidiv.style.backgroundColor = getRandomColor();
+            yenidiv.setAttribute("onclick", "icineekle(this)");
+            divpanel.appendChild(yenidiv);
+        }
+        function icineekle(item) {
+            var width = item.offsetWidth;
+            var height = item.offsetHeight;
+            var yenidiv = document.createElement("div");
+            yenidiv.setAttribute("style", "margin:5px; float:left; height:" + (Number(height) - 10) + "px; width:" + (Number(width) - 10) + "px; background-color:" + getRandomColor() + ";");
+            yenidiv.setAttribute("onclick", "icineekle(this)");
+            yenidiv.style.backgroundColor = getRandomColor();
+            item.setAttribute("onclick", null);
+            item.appendChild(yenidiv);
+        }
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]
+            }
+            return color;
+        }
+    </script>
 </body>
 </html>
