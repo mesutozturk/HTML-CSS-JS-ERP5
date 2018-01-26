@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Jquery</title>
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("Sayfa Yüklendi");
+            console.log(new Date());
+        });
+        $(function () {
+            console.log("Sayfa Yüklendi2");
+            console.log(new Date());
+        });
+
+    </script>
+    <style>
+        #panel {
+            width: 200px;
+            height: 110px;
+            background-color: aquamarine;
+            text-align:center;
+            padding-top:90px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="Jquery Yüklendi mi?" id="yukleyici" /><br />
+    <input type="range" class="renk" id="r" max="255" min="0" /><br />
+    <input type="range" class="renk" id="g" max="255" min="0" /><br />
+    <input type="range" class="renk" id="b" max="255" min="0" /><br />
+    <input type="range" class="renk" id="border" max="10" min="0" /><br />
+    <input type="range" class="renk" id="radius" max="110" min="0" /><br />
+    <input type="color" class="renk" id="color"  /><br />
+    <div id="panel"></div>
+    <script>
+        $("#yukleyici").click(function () {
+            console.log("kasmdlk");
+            alert("Yüklendi");
+        });
+        $(".renk").change(renklendir);
+        function renklendir() {
+            var color = $("#color").val();
+            var r = 0, g = 0, b = 0;
+            r = $("#r").val();
+            g = $("#g").val();
+            b = $("#b").val();
+            var renkkodu = "rgb(" + r + "," + g + "," + b + ")";
+            $("#panel").css("background-color", renkkodu);
+            $("#panel").css("heigth", 110);
+            $("#panel").css("width", 200);
+            $("#panel").css("border", $("#border").val() + "px solid "+color);
+            $("#panel").css("border-radius", $("#radius").val() + "px");
+            $("#panel").css("color", color);
+            $("#panel").html("<strong>" + renkkodu + "</strong>");
+        }
+        renklendir();
+    </script>
+</body>
+</html>
