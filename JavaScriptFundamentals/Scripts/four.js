@@ -23,7 +23,7 @@ $("#txtara").keyup(function () {
             kartolustur(value);
         });
         $(".firmakarti").click(function () {
-            console.log(this.id);
+            console.log(this);
             mekandetay(this.id);
         });
     });
@@ -32,6 +32,7 @@ function kartolustur(venue) {
     var kartdiv = document.createElement("div");
     $(kartdiv).addClass("firmakarti");
     $(kartdiv).attr("id", venue.id);
+    $(kartdiv).attr("durum", false);
     var h3 = document.createElement("h3");
     //h3.innerHTML(venue.name);
     $(h3).html(venue.name);
@@ -54,19 +55,33 @@ function mekandetay(id) {
     }).done(function (data) {
         console.log(data.response.venue);
         var venue = data.response.venue;
-        if (venue.bestPhoto === undefined) {
-            $("#"+id).html("<b>Foto yok</b>");
-            return null;
+        var durum = $("#" + id).attr("durum");
+        if (durum == "false") {
+            $("#" + id).attr("durum", true);
+            if (venue.bestPhoto === undefined) {
+                $("#" + id).html("<b>Foto yok</b>");
+                return null;
+            }
+            var fotourl = venue.bestPhoto.prefix;
+            fotourl += venue.bestPhoto.width + "x" + venue.bestPhoto.height;
+            fotourl += venue.bestPhoto.suffix;
+            var img = document.createElement("img");
+            $(img).attr("src", fotourl);
+            $(img).attr("height", 200);
+            $(img).attr("width", 200);
+            $("#" + id).empty();
+            $("#" + id).append(img);
+            return fotourl;
+        } else {
+            $("#" + id).attr("durum", false);
+            $("#" + id).empty();
+            var h3 = document.createElement("h3");
+            $(h3).html(venue.name);
+            var adresdiv = document.createElement("div");
+            $(adresdiv).addClass("adres").html(venue.location.address);
+            var buradadiv = document.createElement("div");
+            $(buradadiv).addClass("burada").html(venue.hereNow.summary);
+            $("#" + id).append(h3).append(adresdiv).append(buradadiv);
         }
-        var fotourl = venue.bestPhoto.prefix;
-        fotourl += venue.bestPhoto.width + "x" + venue.bestPhoto.height;
-        fotourl += venue.bestPhoto.suffix;
-        var img = document.createElement("img");
-        $(img).attr("src", fotourl);
-        $(img).attr("height", 200);
-        $(img).attr("width", 200);
-        $("#" + id).empty();
-        $("#" + id).append(img);
-        return fotourl;
     });
 }
