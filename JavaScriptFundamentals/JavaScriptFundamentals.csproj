@@ -69,6 +69,7 @@
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="07ajaxislemleri.html" />
+    <Content Include="08konumveGoogleMaps.html" />
     <Content Include="Scripts\four.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -90,6 +91,7 @@
     <Content Include="04colorpicker.html" />
     <Content Include="05buttonception.html" />
     <Content Include="06JqueryFundamentals.html" />
+    <Content Include="Scripts\kadastro.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
