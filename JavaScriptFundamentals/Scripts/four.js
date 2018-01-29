@@ -22,11 +22,16 @@ $("#txtara").keyup(function () {
         $.each(data.response.venues, function (key, value) {
             kartolustur(value);
         });
+        $(".firmakarti").click(function () {
+            console.log(this.id);
+            mekandetay(this.id);
+        });
     });
 });
 function kartolustur(venue) {
     var kartdiv = document.createElement("div");
     $(kartdiv).addClass("firmakarti");
+    $(kartdiv).attr("id", venue.id);
     var h3 = document.createElement("h3");
     //h3.innerHTML(venue.name);
     $(h3).html(venue.name);
@@ -41,5 +46,27 @@ function mekandetay(id) {
     query += id;
     query += "?client_id=" + clientid;
     query += "&client_secret=" + clientsecret;
-    query += "&v=20180126";
+    query += "&v=20180129";
+    $.ajax({
+        url: query,
+        dataType: 'JSON',
+        type: 'get'
+    }).done(function (data) {
+        console.log(data.response.venue);
+        var venue = data.response.venue;
+        if (venue.bestPhoto === undefined) {
+            $("#"+id).html("<b>Foto yok</b>");
+            return null;
+        }
+        var fotourl = venue.bestPhoto.prefix;
+        fotourl += venue.bestPhoto.width + "x" + venue.bestPhoto.height;
+        fotourl += venue.bestPhoto.suffix;
+        var img = document.createElement("img");
+        $(img).attr("src", fotourl);
+        $(img).attr("height", 200);
+        $(img).attr("width", 200);
+        $("#" + id).empty();
+        $("#" + id).append(img);
+        return fotourl;
+    });
 }
