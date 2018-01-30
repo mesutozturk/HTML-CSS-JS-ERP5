@@ -4,6 +4,7 @@ var clientsecret = "JV1BXFE1EZNMUCHJP0UCB0CVJ2GXIYBSX20S31PCOSZ3CZ4Z";
 var categoriid = "4d4b7105d754a06374d81259";
 $("#txtara").keyup(function () {
     //console.log(this.value);
+    $("#tarif").hide("slow");
     var arama = this.value;
     var query = apiurl;
     query += "?client_id=" + clientid;
@@ -55,6 +56,7 @@ function mekandetay(id) {
     }).done(function (data) {
         console.log(data.response.venue);
         var venue = data.response.venue;
+        goturbeni(venue.location);
         var durum = $("#" + id).attr("durum");
         if (durum == "false") {
             $("#" + id).attr("durum", true);
@@ -83,5 +85,69 @@ function mekandetay(id) {
             $(buradadiv).addClass("burada").html(venue.hereNow.summary);
             $("#" + id).append(h3).append(adresdiv).append(buradadiv);
         }
+    });
+}
+
+function goturbeni(hedef) {
+    $("#tarif").show(600);
+    $("#aciklama").empty();
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var konum = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var mapdiv = document.getElementById("map");
+        var settings = {
+            center: konum,
+            zoom: 15,
+            mapTypeId: 'roadmap',
+            mapTypeControl: true,
+            navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.SMALL
+            }
+        }
+        var map = new google.maps.Map(mapdiv, settings);
+        var marker = new google.maps.Marker({
+            position: konum,
+            map: map,
+            title: 'Şu an buradasınız',
+            animation: google.maps.Animation.DROP
+        });
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+        var gidilecek = new google.maps.LatLng(hedef.lat, hedef.lng);
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix({
+            origins: [konum],
+            destinations: [gidilecek],
+            travelMode: 'DRIVING',
+            drivingOptions: {
+                departureTime: new Date(),
+                trafficModel: 'bestguess' // pessimistic ve ya optimistic
+            },
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: true,
+            avoidTolls: true,
+        }, function (response, status) {
+            if (status != 'OK') {
+                alert("Mesafe ölçülemedi");
+            } else {
+                console.log(response);
+                $("#bilgi").html("Gidilecek: " + response.destinationAddresses[0] + "<br/>Uzaklık: " + response.rows[0].elements[0].distance.text + "<br/>" + response.rows[0].elements[0].duration.text + "<br/>Trafik ile: " + response.rows[0].elements[0].duration_in_traffic.text)
+            }
+        });
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService.route({
+            origin: konum,
+            destination: gidilecek,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function (response, status) {
+            console.log(response);
+            if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                alert("Rota çizilemedi" + status);
+            }
+        });
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById("aciklama"));
     });
 }

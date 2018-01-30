@@ -68,6 +68,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="09foursquarenavigasyon.html" />
     <Content Include="07ajaxislemleri.html" />
     <Content Include="08konumveGoogleMaps.html" />
     <Content Include="Scripts\four.js" />

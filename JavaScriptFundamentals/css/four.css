@@ -31,3 +31,22 @@
         .firmakarti:hover div {
             color: aqua
         }
+
+#tarif {
+    text-align: center;
+    display:none;
+}
+
+#bilgi, #map, #aciklama {
+    height: 100px;
+    background-color: lavender;
+    border: 1px solid #321;
+}
+
+#map, #aciklama {
+    height: 300px;
+    width: 49%;
+    float: left;
+    margin: 0;
+    overflow-y: auto;
+}
