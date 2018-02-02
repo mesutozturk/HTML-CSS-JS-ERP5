@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlFundamentals", "HtmlFun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptFundamentals", "JavaScriptFundamentals\JavaScriptFundamentals.csproj", "{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapFundamentals", "BootstrapFundamentals\BootstrapFundamentals.csproj", "{C0FE420A-CD0D-4A30-ADCC-A5F87E114ED0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97DE963F-7B3F-4ABD-8CBC-CB05F57EBA70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0FE420A-CD0D-4A30-ADCC-A5F87E114ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0FE420A-CD0D-4A30-ADCC-A5F87E114ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0FE420A-CD0D-4A30-ADCC-A5F87E114ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0FE420A-CD0D-4A30-ADCC-A5F87E114ED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
